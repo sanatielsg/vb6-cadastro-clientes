@@ -37,21 +37,32 @@ Begin VB.Form FrmPrincipal
       _ExtentY        =   8070
       _Version        =   393216
       Tabs            =   2
+      Tab             =   1
       TabsPerRow      =   2
       TabHeight       =   520
       TabCaption(0)   =   "Tab 0"
       TabPicture(0)   =   "FrmPrincipal.frx":0000
-      Tab(0).ControlEnabled=   -1  'True
+      Tab(0).ControlEnabled=   0   'False
       Tab(0).Control(0)=   "Frame1"
       Tab(0).Control(0).Enabled=   0   'False
       Tab(0).ControlCount=   1
       TabCaption(1)   =   "Tab 1"
       TabPicture(1)   =   "FrmPrincipal.frx":001C
-      Tab(1).ControlEnabled=   0   'False
-      Tab(1).ControlCount=   0
+      Tab(1).ControlEnabled=   -1  'True
+      Tab(1).Control(0)=   "Frame2"
+      Tab(1).Control(0).Enabled=   0   'False
+      Tab(1).ControlCount=   1
+      Begin VB.Frame Frame2 
+         Caption         =   "Filtros"
+         Height          =   1095
+         Left            =   120
+         TabIndex        =   7
+         Top             =   480
+         Width           =   10215
+      End
       Begin VB.Frame Frame1 
          Height          =   1215
-         Left            =   120
+         Left            =   -74880
          TabIndex        =   2
          Top             =   3240
          Width           =   10215
