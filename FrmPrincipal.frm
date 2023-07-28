@@ -60,12 +60,10 @@ Begin VB.Form FrmPrincipal
       TabCaption(1)   =   "Consulta"
       TabPicture(1)   =   "FrmPrincipal.frx":001C
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "Frame2"
-      Tab(1).Control(0).Enabled=   0   'False
-      Tab(1).Control(1)=   "MSFlexGrid1"
-      Tab(1).Control(1).Enabled=   0   'False
+      Tab(1).Control(0)=   "MSFlexGrid"
+      Tab(1).Control(1)=   "Frame2"
       Tab(1).ControlCount=   2
-      Begin MSFlexGridLib.MSFlexGrid MSFlexGrid1 
+      Begin MSFlexGridLib.MSFlexGrid MSFlexGrid 
          Height          =   2895
          Left            =   -74880
          TabIndex        =   15
@@ -103,6 +101,23 @@ Begin VB.Form FrmPrincipal
          TabIndex        =   7
          Top             =   360
          Width           =   7455
+         Begin VB.CommandButton CmdPesquisar 
+            Caption         =   "Pesquisar"
+            BeginProperty Font 
+               Name            =   "MS Sans Serif"
+               Size            =   8.25
+               Charset         =   0
+               Weight          =   700
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            Height          =   615
+            Left            =   5880
+            TabIndex        =   16
+            Top             =   240
+            Width           =   1335
+         End
       End
       Begin VB.Frame FrmBotoes 
          Height          =   1215
@@ -254,3 +269,36 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+Sub LimparCampos()
+    TxtCodigo.Text = ""
+    TxtDescricaoCompleta.Text = ""
+    TxtEAN.Text = ""
+End Sub
+
+Private Sub CmdNovo_Click()
+    LimparCampos
+End Sub
+
+Sub PreencherFlexGrid()
+    MSFlexGrid.Cols = 4
+    MSFlexGrid.ColWidth(0) = 200  'Selecao
+    MSFlexGrid.ColWidth(1) = 1000 'Codigo
+    MSFlexGrid.ColWidth(2) = 5000 'Descricao
+    MSFlexGrid.ColWidth(3) = 3000 'Ean
+    
+    MSFlexGrid.TextMatrix(0, 0) = "*"
+    MSFlexGrid.TextMatrix(0, 1) = "Codigo"
+    MSFlexGrid.TextMatrix(0, 2) = "Descrição Completa"
+    MSFlexGrid.TextMatrix(0, 3) = "Código de Barras"
+    
+    'teste
+    MSFlexGrid.TextMatrix(1, 0) = ""
+    MSFlexGrid.TextMatrix(1, 1) = "1"
+    MSFlexGrid.TextMatrix(1, 2) = "COCA COLA 2L"
+    MSFlexGrid.TextMatrix(1, 3) = "7894900011517"
+    
+End Sub
+
+Private Sub CmdPesquisar_Click()
+    PreencherFlexGrid
+End Sub
