@@ -60,8 +60,8 @@ Begin VB.Form FrmPrincipal
       TabCaption(1)   =   "Consulta"
       TabPicture(1)   =   "FrmPrincipal.frx":001C
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "MSFlexGrid"
-      Tab(1).Control(1)=   "Frame2"
+      Tab(1).Control(0)=   "Frame2"
+      Tab(1).Control(1)=   "MSFlexGrid"
       Tab(1).ControlCount=   2
       Begin MSFlexGridLib.MSFlexGrid MSFlexGrid 
          Height          =   2895
@@ -176,7 +176,7 @@ Begin VB.Form FrmPrincipal
             Top             =   240
             Width           =   1335
          End
-         Begin VB.CommandButton CmdIncluir 
+         Begin VB.CommandButton CmdIncluirAlterar 
             Caption         =   "Incluir"
             BeginProperty Font 
                Name            =   "MS Sans Serif"
@@ -193,7 +193,7 @@ Begin VB.Form FrmPrincipal
             Top             =   240
             Width           =   1335
          End
-         Begin VB.CommandButton CmdNovo 
+         Begin VB.CommandButton CmdNovoCancelar 
             Caption         =   "Novo"
             BeginProperty Font 
                Name            =   "MS Sans Serif"
@@ -275,9 +275,7 @@ Sub LimparCampos()
     TxtEAN.Text = ""
 End Sub
 
-Private Sub CmdNovo_Click()
-    LimparCampos
-End Sub
+
 
 Sub PreencherFlexGrid()
     MSFlexGrid.Cols = 4
@@ -299,6 +297,21 @@ Sub PreencherFlexGrid()
     
 End Sub
 
+Private Sub CmdNovoCancelar_Click()
+    LimparCampos
+    
+
+End Sub
+
 Private Sub CmdPesquisar_Click()
     PreencherFlexGrid
+End Sub
+
+Sub BotoesNovo()
+    If (CmdNovoCancelar.Caption = "Novo") Then
+        
+        
+    ElseIf (CmdNovoCancelar.Caption = "Cancelar") Then
+    
+    End If
 End Sub
